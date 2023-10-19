@@ -53,5 +53,3 @@ function check(arr){
 }
 
 console.log(check(arr6))
-// cos(arr6)
-// check(arr2)
