@@ -17,11 +17,9 @@ function check(arr){
     let z=[];
 
     if(Array.isArray(arr[0])){
-        let single_array=[]
         arr.forEach(e=>{
-            single_array=single_array.concat(e)
+            material+=check(e)
         })
-        material = check(single_array)
     }
     for(let i=1;i<arr.length;i++){
         if(x<=arr[i]){
