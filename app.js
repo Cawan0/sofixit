@@ -3,11 +3,29 @@ const check = function(arr){
     let x=arr[0]
     let y=0;
     let z=[];
-
+    
     if(Array.isArray(arr[0])){
+        const holes =[]
         arr.forEach(e=>{
-            material+=check(e)
+            if(e.some(v => v < 0)){
+                holes.push((arr.findIndex((el)=>el==e))+1)
+            }
+            else{
+                material+=check(e)
+            }
         })
+        if(holes.length>1){
+            let strHoles="there are holes in containers nr: "+parseFloat(holes[0])
+            for(let i=1;i<holes.length;i++){
+                strHoles+=", "+holes[i]
+            }
+            material+=" and "+strHoles
+        }else if(holes.length==1){
+            material+=" and there is a hole in container nr: "+holes[0]
+        }
+    }
+    if(arr.some(v => v < 0)){
+        return "There is a hole in the container"
     }
     for(let i=1;i<arr.length;i++){
         if(x<=arr[i]){
